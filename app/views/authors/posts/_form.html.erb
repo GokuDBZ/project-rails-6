@@ -1,0 +1,54 @@
+<%= form_with(model: post, local: true) do |form| %>
+  <% if post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+        <% post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: "form-control"%>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :description %>
+    <%= form.text_area :description , class: "form-control"%>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :header_image %>
+    <%= form.file_field :header_image , class: "form-control"%>
+
+    <%if post.header_image.present?%>
+      <small> Current Image </small>
+      <%= image_tag post.header_image, width:"100%"%>
+    <%end%>
+  </div>
+
+
+
+  <!-- <div class="form-group">
+    <%= form.label :published %>
+    <%= form.check_box :published , class: "form-control"%>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :publisshed_at %>
+    <%= form.datetime_select :publisshed_at , class: "form-control"%>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :author_id %>
+    <%= form.text_field :author_id , class: "form-control"%>
+  </div> -->
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
